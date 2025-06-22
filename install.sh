@@ -2,7 +2,7 @@
 
 set -e
 
-REPO="https://github.com/tuusuario/zsh-setup"
+REPO="https://github.com/lemcok/zsh-setup"
 ZSH_CUSTOM="${HOME}/.oh-my-zsh/custom"
 
 echo "[*] Instalando Zsh..."
