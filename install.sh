@@ -17,11 +17,11 @@ git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM}/plugin
 git clone https://github.com/zsh-users/zsh-syntax-highlighting "${ZSH_CUSTOM}/plugins/zsh-syntax-highlighting"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM}/themes/powerlevel10k"
 
-echo "[*] Clonando configuraciones personales..."
-git clone "$REPO" "$HOME/.zshconfig"
+#echo "[*] Clonando configuraciones personales..."
+#git clone "$REPO" "$HOME/.zshconfig"
 
-echo "[*] Copiando .zshrc..."
-cp "$HOME/.zshconfig/zsh/.zshrc" "$HOME/.zshrc"
+#echo "[*] Copiando .zshrc..."
+#cp "$HOME/.zshconfig/zsh/.zshrc" "$HOME/.zshrc"
 
 echo "[*] Listo. Cambiando a Zsh por defecto (requiere contraseña)..."
 chsh -s $(which zsh)
