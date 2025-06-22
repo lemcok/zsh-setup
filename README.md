@@ -1,1 +1,1 @@
-curl -fsSL https://raw.githubusercontent.com/lemcok/zsh-setup/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/lemcok/zsh-setup/refs/heads/main/install.sh | bash
