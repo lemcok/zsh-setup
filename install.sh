@@ -4,6 +4,7 @@ set -e
 
 REPO="https://github.com/lemcok/zsh-setup"
 ZSH_CUSTOM="${HOME}/.oh-my-zsh/custom"
+FONTS_DIR="$HOME/.local/share/fonts"
 
 echo "[*] Verificando que se ejecuta en Arch Linux..."
 if ! grep -qi arch /etc/os-release; then
@@ -26,22 +27,17 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM}/
 echo "[*] Clonando configuraciones personales..."
 git clone "$REPO" "$HOME/.zshconfig"
 
-echo "[*] Instalando Nerd Fonts (FiraCode)..."
+echo "[*] Instalando fuente Nerd desde archivos locales..."
 
-if pacman -Qi nerd-fonts-fira-code &>/dev/null; then
-  echo "✓ Nerd Font ya instalada."
-else
-  if pacman -Ss nerd-fonts-fira-code &>/dev/null; then
-    sudo pacman -Sy --noconfirm nerd-fonts-fira-code
-  elif command -v paru &>/dev/null; then
-    paru -Sy --noconfirm nerd-fonts-fira-code
-  else
-    echo "⚠️  No se encontró nerd-fonts-fira-code en pacman. Considera instalarla manualmente o con 'paru'."
-  fi
-fi
+mkdir -p "$FONTS_DIR"
+cp "$HOME/.zshconfig/fonts/"*.ttf "$FONTS_DIR"
+
+echo "[*] Actualizando caché de fuentes..."
+fc-cache -f "$FONTS_DIR"
 
 echo "[*] Cambiando shell por defecto a Zsh..."
 chsh -s "$(which zsh)"
 
 echo "✅ Instalación completa."
+echo "🎨 Asegúrate de que tu terminal esté usando 'FiraCode Nerd Font'."
 echo "🔁 Reinicia tu terminal, y asegúrate de configurar tu terminal para usar 'FiraCode Nerd Font'."
