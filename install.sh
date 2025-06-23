@@ -26,6 +26,8 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM}/
 
 echo "[*] Clonando configuraciones personales..."
 git clone "$REPO" "$HOME/.zshconfig"
+cp "$HOME/.zshconfig/zsh/.zshrc" "$HOME/.zshrc"
+
 
 echo "[*] Instalando fuente Nerd desde archivos locales..."
 
