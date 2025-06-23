@@ -26,11 +26,22 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM}/
 echo "[*] Clonando configuraciones personales..."
 git clone "$REPO" "$HOME/.zshconfig"
 
-echo "[*] Copiando .zshrc..."
-cp "$HOME/.zshconfig/zsh/.zshrc" "$HOME/.zshrc"
+echo "[*] Instalando Nerd Fonts (FiraCode)..."
 
-echo "[*] Cambiando shell predeterminado a Zsh (requieres contraseña)..."
-chsh -s $(which zsh)
+if pacman -Qi nerd-fonts-fira-code &>/dev/null; then
+  echo "✓ Nerd Font ya instalada."
+else
+  if pacman -Ss nerd-fonts-fira-code &>/dev/null; then
+    sudo pacman -Sy --noconfirm nerd-fonts-fira-code
+  elif command -v paru &>/dev/null; then
+    paru -Sy --noconfirm nerd-fonts-fira-code
+  else
+    echo "⚠️  No se encontró nerd-fonts-fira-code en pacman. Considera instalarla manualmente o con 'paru'."
+  fi
+fi
 
-echo "✅ Instalación completa. Reinicia tu terminal o ejecuta: zsh"
+echo "[*] Cambiando shell por defecto a Zsh..."
+chsh -s "$(which zsh)"
 
+echo "✅ Instalación completa."
+echo "🔁 Reinicia tu terminal, y asegúrate de configurar tu terminal para usar 'FiraCode Nerd Font'."
